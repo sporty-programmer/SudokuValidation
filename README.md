@@ -1,2 +1,2 @@
 # SudokuValidation
-Checks if a given Sudoku is valid or not
+Checks whether a given Sudoku is valid or not
