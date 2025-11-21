@@ -1,8 +1,8 @@
 pub struct BoardMem {
     // 81 bits needed (one for each field of the board), so use 86 bit bitmask (the best possible size)
-    low: u64,
-    mid: u16,
-    high: u8,
+    v1: u64,
+    v2: u16,
+    v3: u8,
 }
 
 impl BoardMem {
@@ -10,9 +10,9 @@ impl BoardMem {
 
     pub fn new() -> BoardMem {
         BoardMem {
-            low: 0,
-            mid: 0,
-            high: 0,
+            v1: 0,
+            v2: 0,
+            v3: 0,
         }
     }
 
@@ -23,13 +23,13 @@ impl BoardMem {
         }
 
         if index < 64 {
-            ((self.low >> index) & 1) != 0
+            (self.v1 & (1u64 << index)) != 0
         }
         else if index < 80 {
-            ((self.mid >> (index - 64)) & 1) != 0
+            (self.v2 & (1u16 << (index - 64))) != 0
         }
         else {
-            ((self.high >> (index - 80)) & 1) != 0
+            (self.v3 & (1u8 << (index - 80))) != 0
         }
     }
 
@@ -40,13 +40,13 @@ impl BoardMem {
         }
 
         if index < 64 {
-            self.low |= 1 << index;
+            self.v1 |= 1u64 << index;
         }
         else if index < 80 {
-            self.mid |= 1 << (index - 64);
+            self.v2 |= 1u16 << (index - 64);
         }
         else {
-            self.high |= 1 << (index - 80);
+            self.v3 |= 1u8 << (index - 80);
         }
     }
 }
