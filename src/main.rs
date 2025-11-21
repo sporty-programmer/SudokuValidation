@@ -5,6 +5,8 @@ mod validate;
 
 fn main() {
 
+    // test boards
+    
     let board1: [[i8; 9]; 9] = [
         [5,3,-1,-1,7,-1,-1,-1,-1],
         [6,-1,-1,1,9,5,-1,-1,-1],
@@ -40,6 +42,8 @@ fn main() {
         [-1,-1,-1,-1,-1,-1,-1,-1,-1],
         [-1,-1,-1,-1,-1,-1,-1,-1,-1]
     ];
+    
+    // validation of test boards
 
     println!("{}", validate(board1, true)); // 1
     println!("{}", validate(board2, true)); // 0

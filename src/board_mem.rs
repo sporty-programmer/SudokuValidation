@@ -1,5 +1,5 @@
 pub struct BoardMem {
-    // 81 bits needed (one for each field of the board), so use 86 bit bitmask (the best possible case)
+    // 81 bits needed (one for each field of the board), so use 86 bit bitmask (the best possible size)
     low: u64,
     mid: u16,
     high: u8,
